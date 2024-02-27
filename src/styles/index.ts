@@ -13,13 +13,14 @@ export const {
   theme: {
     colors: {
       white: '#fff',
-      gray900: '#121214',
-      gray800: '#202024',
-      gray300: '#c4c4cc',
-      gray100: '#e1e1e6',
+      gray900: '#121214', // background
+      gray800: '#202024', // elements
+      gray300: '#8D8D99', // icon
+      gray200: '#C4C4CC', // text
+      gray100: '##E1E1E6', // title
 
       green500: '#00875f',
-      green300: '#00b37e'
+      green300: '#00b37e',
     },
     fontSizes: {
       md: '1.125rem',
