@@ -32,10 +32,16 @@ export const Product = styled('div', {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: 'rgba(0, 0, 0, .6)',
+    backgroundColor: 'rgba(32, 32, 32, .9)',
     transform: 'translateY(110%)',
     opacity: 0,
     transition: 'all 0.2s ease-in-out',
+
+    "> div": {
+      display: "flex",
+      flexDirection: "column",
+      gap: "0.25rem"
+    },
 
     strong: {
       fontSize: '$lg',
@@ -46,6 +52,20 @@ export const Product = styled('div', {
       fontSize: '$xl',
       fontWeight: 'bold',
       color: '$green300'
+    },
+
+    button: {
+      height: '3.5rem',
+      width: '3.5rem',
+      display: 'flex',
+      alignItems: "center",
+      justifyContent: "center",
+
+      borderRadius: 8,
+      border: "none",
+      color: "$white",
+      backgroundColor: "$green500",
+      cursor: "pointer"
     }
   },
 

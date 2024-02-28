@@ -17,7 +17,7 @@ export const {
       gray800: '#202024', // elements
       gray300: '#8D8D99', // icon
       gray200: '#C4C4CC', // text
-      gray100: '##E1E1E6', // title
+      gray100: '#E1E1E6', // title
 
       green500: '#00875f',
       green300: '#00b37e',

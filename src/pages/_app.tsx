@@ -1,12 +1,13 @@
 import type { AppProps } from 'next/app'
+import Image from 'next/image';
+
 import { globalStyles } from '../styles/global'
 
 import logoImg from '../assets/logo.svg'
 
-import { CartAmount, CartIconContainer, Container, Header } from '../styles/pages/app';
 import { Handbag } from '@phosphor-icons/react/dist/ssr';
-import Image from 'next/image';
-import Link from 'next/link';
+
+import { CartAmount, CartIconContainer, Container, Header } from '../styles/pages/app';
 
 globalStyles();
 
