@@ -3,14 +3,15 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import { HomeContainer, Product } from '../styles/pages/home'
-
 import Stripe from 'stripe'
 import { stripe } from '../lib/stripe'
 
 import { useKeenSlider } from 'keen-slider/react'
 import 'keen-slider/keen-slider.min.css'
+
 import { Handbag } from '@phosphor-icons/react'
+
+import { HomeContainer, Product } from '../styles/pages/home'
 
 interface HomeProps {
   products: {
