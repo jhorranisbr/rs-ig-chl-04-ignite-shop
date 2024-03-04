@@ -9,15 +9,15 @@ import { numberFormatter } from "../utils/formatter";
 
 
 export default function Cart() {
-  const { cartDetails, cartCount, totalPrice, removeItem } = useShoppingCart()
+  const { cartDetails, cartCount, totalPrice, shouldDisplayCart, handleCloseCart, removeItem } = useShoppingCart()
 
   function handleRemoveProductFromCart(id: string) {
     removeItem(id)
   }
 
   return (
-    <CartContainer>
-      <CloseButton>
+    <CartContainer state={shouldDisplayCart! ? "opened" : "closed"}>
+      <CloseButton onClick={handleCloseCart} >
         <X size={24} weight="bold" />
       </CloseButton>
 

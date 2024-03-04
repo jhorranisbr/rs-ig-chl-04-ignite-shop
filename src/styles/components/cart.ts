@@ -19,9 +19,10 @@ export const CartContainer = styled("aside", {
   backgroundColor: "$gray800",
   position: "fixed",
   top: "0",
-  right: "0",
   padding: "4.5rem 3rem 3rem",
   overflowY: "auto",
+  transition: "all ease 0.3s",
+
 
   h2: {
     fontSize: "1.25rem",
@@ -30,6 +31,18 @@ export const CartContainer = styled("aside", {
 
   footer: {
     margin: "3.5rem 0",
+  },
+
+  variants: {
+    state: {
+      opened: {
+        right: 0,
+      },
+
+      closed: {
+        right: "-488px",
+      }
+    }
   }
 })
 
