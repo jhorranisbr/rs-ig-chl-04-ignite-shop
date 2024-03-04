@@ -8,14 +8,22 @@ import logoImg from '../assets/logo.svg'
 import { Handbag } from '@phosphor-icons/react/dist/ssr';
 
 import { CartAmount, CartIconContainer, Container, Header } from '../styles/pages/app';
-import { CartContextProvider } from '../contexts/CartContext';
 import Cart from '../components/Cart';
+import { CartProvider } from 'use-shopping-cart';
 
 globalStyles();
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <CartContextProvider>
+    <CartProvider
+      mode='payment'
+      cartMode="client-only"
+      stripe={'test'}
+      successUrl={`${process.env.NEXT_PUBLIC_URL}/success?session_id={CHECKOUT_SESSION_ID}`}
+      cancelUrl={`${process.env.NEXT_PUBLIC_URL}`}
+      currency="BRL"
+      allowedCountries={['BR']}
+      shouldPersist={true}>
       <>
         <Container>
           <Header>
@@ -30,6 +38,7 @@ export default function App({ Component, pageProps }: AppProps) {
         </Container>
         <Cart></Cart>
       </>
-    </CartContextProvider>
+    </CartProvider>
+
   )
 }
