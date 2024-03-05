@@ -1,10 +1,12 @@
-import Link from "next/link";
-import { ImageContainer, SuccessContainer } from "../styles/pages/success";
 import { GetServerSideProps } from "next";
+import Head from "next/head";
+import Link from "next/link";
+import Image from "next/image";
+
 import { stripe } from "../lib/stripe";
 import Stripe from "stripe";
-import Image from "next/image";
-import Head from "next/head";
+
+import { ImageContainer, SuccessContainer } from "../styles/pages/success";
 
 interface SuccessProps {
   customerName: string;
@@ -44,7 +46,6 @@ export default function Success({ customerName, product }: SuccessProps) {
 
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-
 
   if (!query.session_id) {
     return {

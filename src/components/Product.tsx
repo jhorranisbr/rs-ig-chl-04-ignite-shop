@@ -11,6 +11,7 @@ interface Product {
   imageUrl: string,
   price: string,
   priceNumber: number
+  defaultPriceId: string
 }
 
 interface ProductProps {
@@ -30,6 +31,7 @@ export default function Product({ product }: ProductProps) {
       price: product.priceNumber,
       image: product.imageUrl,
       currency: 'BRL',
+      price_id: product.defaultPriceId
     }, { count: 1 });
 
     // set quantity to 1 to avoid check if product already in cart
