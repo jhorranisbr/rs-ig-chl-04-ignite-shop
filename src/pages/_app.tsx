@@ -1,17 +1,16 @@
 import type { AppProps } from 'next/app'
+import { CartProvider } from 'use-shopping-cart';
 
 import { globalStyles } from '../styles/global'
 
 import { Container } from '../styles/pages/app';
+
 import Cart from '../components/Cart';
-import { CartProvider } from 'use-shopping-cart';
 import Header from '../components/Header';
 
 globalStyles();
 
 export default function App({ Component, pageProps }: AppProps) {
-
-
   return (
     <CartProvider
       mode='payment'
@@ -27,7 +26,8 @@ export default function App({ Component, pageProps }: AppProps) {
           <Header />
           <Component {...pageProps} />
         </Container>
-        <Cart></Cart>
+
+        <Cart />
       </>
     </CartProvider>
 

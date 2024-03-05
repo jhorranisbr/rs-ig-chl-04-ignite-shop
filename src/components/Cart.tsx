@@ -1,12 +1,22 @@
 import { X } from "@phosphor-icons/react/dist/ssr";
-import { CartContainer, CloseButton, ProductContainer, ProductList, Total, BetweenContainer, Amount, BuyButton } from "../styles/components/cart";
+
+import Link from "next/link";
 import Image from "next/image";
 
-import image from '../assets/1.png'
-import Link from "next/link";
 import { useShoppingCart } from "use-shopping-cart";
+
 import { numberFormatter } from "../utils/formatter";
 
+import {
+  CartContainer,
+  CloseButton,
+  ProductContainer,
+  ProductList,
+  Total,
+  BetweenContainer,
+  Amount,
+  BuyButton,
+} from "../styles/components/cart";
 
 export default function Cart() {
   const { cartDetails, cartCount, totalPrice, shouldDisplayCart, handleCloseCart, removeItem } = useShoppingCart()
@@ -27,7 +37,7 @@ export default function Cart() {
         {Object.values(cartDetails ?? {}).map((entry) => (
           <ProductContainer key={entry.id}>
             <Link href="/">
-              <Image src={image} alt="" width={102} height={94} />
+              <Image src={entry.image!} alt="" width={102} height={94} />
             </Link>
 
             <div>

@@ -1,3 +1,4 @@
+import { transform } from "next/dist/build/swc"
 import { styled } from ".."
 
 export const HeaderContainer = styled('header', {
@@ -22,12 +23,16 @@ export const CartIconContainer = styled('div', {
   position: "relative",
   cursor: "pointer",
 
-  svg: {
-    color: "$gray300",
-  },
+
 
   variants: {
     variant: {
+      default: {
+        svg: {
+          color: "$gray300",
+        },
+      },
+
       full: {
         color: "white",
         svg: {
@@ -41,19 +46,26 @@ export const CartIconContainer = styled('div', {
 export const CartAmount = styled('div', {
   height: '1.5rem',
   width: '1.5rem',
+  boxSizing: "content-box",
+
   borderRadius: '50%',
   backgroundColor: "$green500",
+
   display: 'flex',
   alignItems: "center",
   justifyContent: "center",
+
   borderWidth: 3,
   borderColor: "$gray900",
   borderStyle: "solid",
-  fontWeight: "bold",
-  fontSize: "0.875rem",
+
   position: "absolute",
   top: "-50%",
   right: "-50%",
   transform: "translate(-50%, 50%)",
 
+  span: {
+    fontWeight: "bold",
+    fontSize: "0.875rem",
+  }
 })

@@ -1,7 +1,5 @@
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
-import Link from 'next/link'
-import Image from 'next/image'
 
 import Stripe from 'stripe'
 import { stripe } from '../lib/stripe'
@@ -9,10 +7,7 @@ import { stripe } from '../lib/stripe'
 import { useKeenSlider } from 'keen-slider/react'
 import 'keen-slider/keen-slider.min.css'
 
-import { Handbag } from '@phosphor-icons/react'
-
 import { HomeContainer } from '../styles/pages/home'
-import { useShoppingCart } from 'use-shopping-cart'
 import Product from '../components/Product'
 
 interface HomeProps {
