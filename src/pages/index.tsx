@@ -9,6 +9,8 @@ import 'keen-slider/keen-slider.min.css'
 
 import { HomeContainer } from '../styles/pages/home'
 import Product from '../components/Product'
+import { useState } from 'react'
+import SlideArrows from '../components/SlideArrows'
 
 interface HomeProps {
   products: {
@@ -23,11 +25,21 @@ interface HomeProps {
 }
 
 export default function Home({ products }: HomeProps) {
-  const [sliderRef] = useKeenSlider({
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [loaded, setLoaded] = useState(false)
+  const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
+    initial: 0,
     slides: {
-      perView: 3,
-      spacing: 48
-    }
+      perView: 2,
+      spacing: 48,
+      origin: "center"
+    },
+    slideChanged(slider) {
+      setCurrentSlide(slider.track.details.rel)
+    },
+    created() {
+      setLoaded(true)
+    },
   })
 
   return (
@@ -38,6 +50,21 @@ export default function Home({ products }: HomeProps) {
 
       <HomeContainer ref={sliderRef} className='keen-slider'>
         {products.map(product => <Product key={product.id} product={product} />)}
+
+        {loaded && instanceRef.current && (
+          <>
+            <SlideArrows
+              disabledLeftArrow={currentSlide === 0}
+              disabledRightArrow={currentSlide === instanceRef.current.track.details.slides.length - 1}
+              onPrevClick={(e: any) =>
+                e.stopPropagation() || instanceRef.current?.prev()
+              }
+              onNextClick={(e: any) =>
+                e.stopPropagation() || instanceRef.current?.next()
+              }
+            />
+          </>
+        )}
       </HomeContainer >
     </>
   )
