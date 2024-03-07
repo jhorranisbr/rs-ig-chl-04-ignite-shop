@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { X } from "@phosphor-icons/react/dist/ssr";
+import { ShoppingCart, X } from "@phosphor-icons/react/dist/ssr";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -18,6 +18,7 @@ import {
   BetweenContainer,
   Amount,
   BuyButton,
+  EmptyCartContainer,
 } from "../styles/components/cart";
 import axios from "axios";
 
@@ -28,6 +29,10 @@ export default function Cart() {
 
   function handleRemoveProductFromCart(id: string) {
     removeItem(id)
+  }
+
+  function isEmptyCart() {
+    return cartCount === 0 ?? undefined
   }
 
   async function handleBuyProduct() {
@@ -61,23 +66,30 @@ export default function Cart() {
 
       <h2>Sacola de compras</h2>
 
-      <ProductList>
-        {Object.values(cartDetails ?? {}).map((entry) => (
-          <ProductContainer key={entry.id}>
-            <Link href="/">
-              <Image src={entry.image!} alt="" width={102} height={94} />
-            </Link>
+      {cartCount! > 0 ? (
+        <ProductList>
+          {Object.values(cartDetails ?? {}).map((entry) => (
+            <ProductContainer key={entry.id}>
+              <Link href="/">
+                <Image src={entry.image!} alt="" width={102} height={94} />
+              </Link>
 
-            <div>
-              <span>{entry.name}</span>
-              <strong>{numberFormatter.format(entry.price)}</strong>
-              <button onClick={() => { handleRemoveProductFromCart(entry.id) }}>Remover</button>
-            </div>
-          </ProductContainer>
-        ))}
-      </ProductList>
+              <div>
+                <span>{entry.name}</span>
+                <strong>{numberFormatter.format(entry.price)}</strong>
+                <button onClick={() => { handleRemoveProductFromCart(entry.id) }}>Remover</button>
+              </div>
+            </ProductContainer>
+          ))}
+        </ProductList>
+      ) : (
+        <EmptyCartContainer>
+          <ShoppingCart size={96} />
+          <span>Seu carrinho de compras está vazio. <br /> Tente adicionar itens.</span>
+        </EmptyCartContainer>
+      )}
 
-      <footer>
+      < footer >
         <BetweenContainer>
           <Amount>Quantidade</Amount>
           <Amount size="md">{cartCount} itens</Amount>
@@ -88,8 +100,8 @@ export default function Cart() {
           <Total size="xl">{numberFormatter.format(totalPrice!)}</Total>
         </BetweenContainer>
 
-        <BuyButton onClick={handleBuyProduct}>Finalizar Compra</BuyButton>
+        <BuyButton disabled={cartCount === 0} onClick={handleBuyProduct}>Finalizar Compra</BuyButton>
       </footer>
-    </CartContainer>
+    </CartContainer >
   )
 }

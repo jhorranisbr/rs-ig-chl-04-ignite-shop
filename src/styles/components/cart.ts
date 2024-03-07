@@ -159,4 +159,20 @@ export const BuyButton = styled("button", {
   }
 })
 
+export const EmptyCartContainer = styled('div', {
+  flex: 1,
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: "1.5rem",
+  color: "$gray300",
+  opacity: 0.38,
+
+  span: {
+    fontSize: "$md",
+    textAlign: 'center'
+  }
+})
+
 

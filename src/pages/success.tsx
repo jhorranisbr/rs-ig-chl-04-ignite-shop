@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 
 import { GetServerSideProps } from "next";
 import Head from "next/head";
@@ -87,8 +87,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   const customerName = session.customer_details?.name
   const products = session.line_items!.data
-
-  console.log(products)
 
   return {
     props: {
