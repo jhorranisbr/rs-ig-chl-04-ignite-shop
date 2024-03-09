@@ -15,10 +15,11 @@ interface Product {
 }
 
 interface ProductProps {
-  product: Product
+  product: Product,
+  active: boolean
 }
 
-export default function Product({ product }: ProductProps) {
+export default function Product({ product, active }: ProductProps) {
   const { addItem, setItemQuantity } = useShoppingCart()
 
   function handleAddProductToCart() {
@@ -40,7 +41,7 @@ export default function Product({ product }: ProductProps) {
   }
 
   return (
-    <Content className='keen-slider__slide'>
+    <Content className='keen-slider__slide' mode={active ? "active" : "default"}>
       <Link key={product.id} href={`product/${product.id}`} prefetch={false}>
         <Image src={product.imageUrl} width={520} height={480} alt='' />
       </Link>

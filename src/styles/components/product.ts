@@ -27,7 +27,7 @@ export const Content = styled('div', {
     backgroundColor: 'rgba(32, 32, 32, .9)',
     transform: 'translateY(110%)',
     opacity: 0,
-    transition: 'all 0.2s ease-in-out',
+    transition: 'all 0.2s ease',
 
     "> div": {
       display: "flex",
@@ -61,11 +61,16 @@ export const Content = styled('div', {
     }
   },
 
-  '&:hover': {
-    footer: {
-      transform: 'translateY(0%)',
-      opacity: 1,
-    }
-  }
+  variants: {
+    mode: {
+      active: {
+        footer: {
+          transform: 'translateY(0%)',
+          opacity: 1,
+        }
+      },
 
+      default: {}
+    }
+  },
 })

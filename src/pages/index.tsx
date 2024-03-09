@@ -30,9 +30,12 @@ export default function Home({ products }: HomeProps) {
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     initial: 0,
     slides: {
-      perView: 2,
+      perView: 3,
       spacing: 48,
-      origin: "center"
+      origin: "center",
+    },
+    defaultAnimation: {
+      duration: 1000,
     },
     slideChanged(slider) {
       setCurrentSlide(slider.track.details.rel)
@@ -49,7 +52,7 @@ export default function Home({ products }: HomeProps) {
       </Head>
 
       <HomeContainer ref={sliderRef} className='keen-slider'>
-        {products.map(product => <Product key={product.id} product={product} />)}
+        {products.map((product, index) => <Product key={product.id} product={product} active={currentSlide === index} />)}
 
         {loaded && instanceRef.current && (
           <>
